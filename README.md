@@ -5,10 +5,12 @@ Interactive Fiction in CoffeeScript
 Interactive Fiction is fun! Is more motivation required? :-)
 
 ## Dependencies
-if-coffee depends on [jQuery 2.1.1](http://code.jquery.com/jquery-2.1.1.min.js)
+if-coffee depends on:
+* [jQuery 2.1.1](http://code.jquery.com/jquery-2.1.1.min.js)
+* [jQuery UI 1.11](http://jqueryui.com/resources/download/jquery-ui-1.11.1.zip)
 
-IF will probably work with older versions of jQuery, but this is the only
-version the author has tested IF with.
+IF will probably work with other versions of jQuery and jQuery UI, but
+these are the only versions the author has tested with IF.
 
 ## IF - The Interactive Fiction Library
 The included Cakefile will compile src/if.coffee to lib/if.coffee.

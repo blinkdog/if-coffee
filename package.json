@@ -1,0 +1,39 @@
+{
+    "name": "if-coffee",
+    "version": "0.0.1",
+    "description": "Interactive Fiction in CoffeeScript",
+    "keywords": [
+	"adventure",
+	"fiction",
+	"IF",
+	"inform",
+	"interactive",
+	"TADS",
+	"text",
+	"twee",
+	"twine",
+	"xyzzy"
+    ],
+    "homepage": "https://github.com/blinkdog/if-coffee",
+    "bugs": "https://github.com/blinkdog/if-coffee/issues",
+    "license" : "AGPL-3.0",
+    "author": "Patrick Meade <veloxi@ticon.net>",
+    "files": [
+        "if-coffee.html",
+        "css",
+        "js",
+        "lib",
+        "LICENSE",
+        "README.md",
+        "package.json"
+    ],
+    "main": "if-coffee",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/blinkdog/if-coffee.git"
+    },
+    "devDependencies": {
+        "coffee-script": "1.7.x"
+    },
+    "private": true
+}

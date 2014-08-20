@@ -1,4 +1,4 @@
-# hello.coffee
+# copyright.coffee
 # Copyright 2014 Patrick Meade.
 #
 # This program is free software: you can redistribute it and/or modify
@@ -15,7 +15,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #----------------------------------------------------------------------------
 
-alert 'Hello, Interactive Fiction!'
+$(document).ready ->
+  $("#copyright").click ->
+    alert 'Show GNU Affero Public License Here'
 
 #----------------------------------------------------------------------------
-# end of hello.coffee
+# end of copyright.coffee

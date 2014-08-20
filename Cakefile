@@ -16,29 +16,59 @@
 #----------------------------------------------------------------------------
 
 {exec} = require 'child_process'
+{version} = require './package.json'
+
+task 'build', 'Build the project', ->
+  compile()
+
+task 'clean', 'Remove build and distribution products', ->
+  clean()
+
+task 'dist', 'Create distribution tarball', ->
+  clean -> compile -> distribute()
+
+task 'read', 'Read/Play the Interactive Fiction', ->
+  browse()
+
+task 'rebuild', 'Rebuild the project from scratch', ->
+  clean -> compile()
+
+#----------------------------------------------------------
 
 DIST_COMMAND = """
-tar cvzf if-coffee/if-coffee.tar.gz \
+tar cvzf if-coffee/if-coffee-#{version}.tar.gz \
 if-coffee/README.md \
 if-coffee/LICENSE \
 if-coffee/if-coffee.html \
 if-coffee/css \
 if-coffee/js \
-if-coffee/src
+if-coffee/lib
 """
 
-task 'clean', 'Clean build and distribution products', ->
-  exec "rm if-coffee.tar.gz", (err, stdout, stderr) ->
-    throw err if err
-
-task 'dist', 'Create distribution tarball', ->
-  exec DIST_COMMAND, { cwd: '..' }, (err, stdout, stderr) ->
-    throw err if err
-
-task 'read', 'Read/Play the Interactive Fiction', ->
+browse = (next) ->
   exec 'firefox --new-window --safe-mode if-coffee.html', (err, stdout, stderr) ->
     throw err if err
     console.log stdout + stderr
+    next?()
+
+compile = (next) ->
+  exec 'node_modules/coffee-script/bin/coffee -o lib/ -c src', (err, stdout, stderr) ->
+    throw err if err
+    exec 'node_modules/coffee-script/bin/coffee -o lib/ -c ifcomp', (err, stdout, stderr) ->
+      throw err if err
+      next?()
+
+distribute = (next) ->
+  exec DIST_COMMAND, { cwd: '..' }, (err, stdout, stderr) ->
+    throw err if err
+    next?()
+
+clean = (next) ->
+  exec "rm -f if-coffee-*.tar.gz", (err, stdout, stderr) ->
+    throw err if err
+    exec "rm -f lib/*", (err, stdout, stderr) ->
+      throw err if err
+      next?()
           
 #----------------------------------------------------------------------------
 # end of Cakefile

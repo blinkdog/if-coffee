@@ -1,6 +1,29 @@
 # if-coffee
 Interactive Fiction in CoffeeScript
 
+## Motivation
+Interactive Fiction is fun! Is more motivation required? :-)
+
+## Dependencies
+if-coffee depends on [jQuery 2.1.1](http://code.jquery.com/jquery-2.1.1.min.js)
+
+IF will probably work with older versions of jQuery, but this is the only
+version the author has tested IF with.
+
+## IF - The Interactive Fiction Library
+The included Cakefile will compile src/if.coffee to lib/if.coffee.
+Use a <script> tag to include lib/if.coffee in your project, to
+make use of the Interactive Fiction library.
+
+### window.IF
+The top level object, representing an instance of Interactive Fiction.
+
+#### IF.title( string )
+Set the title of the Interactive Fiction. Also updates the <title> tag
+in the DOM, thereby setting the title in the browser.
+
+    IF.title 'Attack of the IF Authors from Outer Space'
+
 ## License
 if-coffee
 Copyright 2014 Patrick Meade

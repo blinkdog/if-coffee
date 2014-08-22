@@ -16,6 +16,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+* {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#command-stack {
+    background-color: #3b719f;
+    bottom: 0px;
+    color: white;
+    font-family: monospace;
+    font-size: 16px;
+    left: 0px;
+    position: fixed;
+    width: 100%;
+}
+
 #copyright {
     top: 0px;
     position: fixed;
@@ -24,6 +41,7 @@
 
 #inventory {
     bottom: 0px;
+    margin-bottom: 16px;
     position: fixed;
     right: 0px;
 }

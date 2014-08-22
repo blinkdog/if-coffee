@@ -35,16 +35,42 @@ class IF
     # anybody else is OK
     return true
 
+  # generate a random name
+  name: (sex) ->
+    if Math.random() < 0.5
+      firstList = window.NAMES.FEMALE
+    else
+      firstList = window.NAMES.MALE
+    firstList = window.NAMES.FEMALE if sex is 'female'
+    firstList = window.NAMES.MALE if sex is 'male'
+    lastList = window.NAMES.LAST
+    first = firstList.random().toLowerCase().capitalize()
+    last = lastList.random().toLowerCase().capitalize()
+    first + ' ' + last
+
 # define the global interaction fiction library (IF)
 window.IF = new IF "Untitled", "The Author"
+
+# some helper functions
+blinkCursor = ->
+  commandText = $("#command-stack").text()
+  cursorIndex = commandText.indexOf '|'
+  if cursorIndex is -1
+    commandText += "|"
+  else
+    commandText = commandText.substr 0, cursorIndex
+  $("#command-stack").text(commandText)
+  setTimeout blinkCursor, 500
 
 ###
   Friends don't let friends browse with Microsoft Internet Explorer
 ###
 $(document).ready ->
   if not window.IF.isSupported()
-    $("body").replaceWith('<body><a href="http://donotuseie.com/" class="frown">☹</a></body>')
+    $("body").replaceWith('<body><a href="http://donotuseie.com/" class="frown">IE ☹</a></body>')
     delete window.IF
+  else
+    setTimeout blinkCursor, 1
 
 #----------------------------------------------------------------------------
 # end of if.coffee

@@ -24,6 +24,9 @@ task 'build', 'Build the project', ->
 task 'clean', 'Remove build and distribution products', ->
   clean()
 
+task 'develop', 'Work in development mode', ->
+  develop()
+
 task 'dist', 'Create distribution tarball', ->
   clean -> compile -> distribute()
 
@@ -57,6 +60,11 @@ compile = (next) ->
     exec 'node_modules/coffee-script/bin/coffee -o lib/ -c ifcomp', (err, stdout, stderr) ->
       throw err if err
       next?()
+
+develop = ->
+  exec 'node_modules/coffee-script/bin/coffee --watch -o lib/ -c src', (err, stdout, stderr) ->
+    throw err if err
+    console.log stdout + stderr
 
 distribute = (next) ->
   exec DIST_COMMAND, { cwd: '..' }, (err, stdout, stderr) ->

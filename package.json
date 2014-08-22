@@ -1,6 +1,6 @@
 {
     "name": "if-coffee",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Interactive Fiction in CoffeeScript",
     "keywords": [
 	"adventure",
